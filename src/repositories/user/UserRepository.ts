@@ -13,4 +13,8 @@ export class UserRepository {
   async save(user: User): Promise<User> {
     return await this.userModel.create(user);
   }
+
+  async getUser(email: string) {
+    return await this.userModel.find({ email }).exec();
+  }
 }
