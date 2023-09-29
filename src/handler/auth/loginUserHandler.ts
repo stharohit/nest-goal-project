@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from '../../repositories/user/UserRepository';
 import { LoginDto } from '../../controllers/auth/dto/Login.dto';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable()
 export class LoginUserHandler {
-  constructor(private userRepository: UserRepository) {}
+  constructor(private authService: AuthService) {}
 
   async execute(loginDTO: LoginDto) {
-    return await this.userRepository.getUser(loginDTO.email);
+    try {
+      return await this.authService.login(loginDTO);
+    } catch (e) {
+      throw e;
+    }
   }
 }

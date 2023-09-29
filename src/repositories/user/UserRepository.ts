@@ -15,6 +15,6 @@ export class UserRepository {
   }
 
   async getUser(email: string) {
-    return await this.userModel.find({ email }).exec();
+    return await this.userModel.findOne({ email }).exec();
   }
 }

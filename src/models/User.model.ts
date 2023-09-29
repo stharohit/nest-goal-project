@@ -1,11 +1,13 @@
+import * as bcrypt from 'bcrypt';
+
 export class UserModel {
-  readonly email: string;
+  email: string;
 
-  readonly password: string;
+  password: string;
 
-  readonly firstName: string;
+  firstName: string;
 
-  readonly lastName: string;
+  lastName: string;
 
   constructor(
     init: Pick<UserModel, 'firstName' | 'lastName' | 'email' | 'password'>,
@@ -13,11 +15,6 @@ export class UserModel {
     this.email = init.email;
     this.firstName = init.firstName;
     this.lastName = init.lastName;
-    this.password = this.encryptPassword(init.password);
-  }
-
-  private encryptPassword(password: string) {
-    // some logic to update password to hash
-    return password;
+    this.password = init.password;
   }
 }
