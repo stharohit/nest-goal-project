@@ -1,6 +1,7 @@
+
 export const mongoUser = {
-  name: 'rht',
-  token: 'x4L2qBC1raY8ivvT',
+  name: process.env.DB_NAME,
+  token: process.env.DB_PASSWORD,
 };
 
 export const mongoConfig = {
